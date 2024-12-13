@@ -1,0 +1,91 @@
+[5:15 p. m., 13/12/2024] Dahiana: class Program
+{
+    static void Main(string[] args)
+    {
+        OperacionesMatematicas operaciones = new OperacionesMatematicas();
+
+        double a = 5;
+        double b = 3;
+
+        Console.WriteLine($"Suma: {operaciones.Sumar(a, b)}");
+        Console.WriteLine($"Resta: {operaciones.Restar(a, b)}");
+        Console.WriteLine($"Multiplicación: {operaciones.Multiplicar(a, b)}");
+        Console.WriteLine($"División: {operaciones.Dividir(a, b)}");
+
+        double radio = 7;
+        Console.WriteLine($"Área del círculo: {operaciones.CalcularAreaCirculo(radio)}");
+        Console.WriteLine($"Volumen de la esfera: {operaciones.CalcularVolumenEsfera(radio)}");
+
+        double x1 = 0, y1 = 0, x2 = 3, y2 = 4;
+        Console.WriteLine($"Distancia entre puntos: {operaciones.CalcularDistancia(x1, y1, x2, y2)}");
+    }
+}
+[5:16 p. m., 13/12/2024] Dahiana: public class OperacionesMatematicas : OperacionesBase
+{
+    // Esta clase puede contener métodos adicionales o usarse tal como está.
+}
+[5:16 p. m., 13/12/2024] Dahiana: public abstract class OperacionesBase : IOperaciones
+{
+    public double Sumar(double a, double b)
+    {
+        return a + b;
+    }
+
+    public double Restar(double a, double b)
+    {
+        return a - b;
+    }
+
+    public double Multiplicar(double a, double b)
+    {
+        return a * b;
+    }
+
+    public double Dividir(double a, double b)
+    {
+        if (b == 0)
+        {
+            Console.WriteLine("Error: División por cero.");
+            return double.NaN; // Retorna NaN si se intenta dividir por cero
+        }
+        return a / b;
+    }
+
+    public double CalcularAreaCirculo(double radio)
+    {
+        return Math.PI * Math.Pow(radio, 2);
+    }
+
+    public double CalcularVolumenEsfera(double radio)
+    {
+        return (4.0 / 3.0) * Math.PI * Math.Pow(radio, 3);
+    }
+
+    public double CalcularDistancia(double x1, double y1, double x2, double y2)
+    {
+        return Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+    }
+}
+[5:16 p. m., 13/12/2024] Dahiana: public interface IOperaciones
+{
+    // Suma dos números.
+    double Sumar(double a, double b);
+
+    // Resta dos números.
+    double Restar(double a, double b);
+
+    // Multiplica dos números.
+    double Multiplicar(double a, double b);
+
+    // Divide dos números (manejar la división por cero).
+    double Dividir(double a, double b);
+
+    // Calcula el área de un círculo.
+    double CalcularAreaCirculo(double radio);
+
+    // Calcula el volumen de una esfera.
+    double CalcularVolumenEsfera(double radio);
+
+    // Calcula la distancia entre dos puntos en un plano cartesiano.
+    double CalcularDistancia(double x1, double y1, double x2, double y2);
+}
